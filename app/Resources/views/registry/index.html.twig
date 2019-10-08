@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registries list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Citizenship</th>
+                <th>Gender</th>
+                <th>Affiliation</th>
+                <th>Telephone</th>
+                <th>Interest</th>
+                <th>Title</th>
+                <th>Advisor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registry in registries %}
+            <tr>
+                <td><a href="{{ path('registry_show', { 'id': registry.id }) }}">{{ registry.id }}</a></td>
+                <td>{{ registry.name }}</td>
+                <td>{{ registry.surname }}</td>
+                <td>{{ registry.email }}</td>
+                <td>{{ registry.citizenship }}</td>
+                <td>{{ registry.gender }}</td>
+                <td>{{ registry.affiliation }}</td>
+                <td>{{ registry.telephone }}</td>
+                <td>{{ registry.interest }}</td>
+                <td>{{ registry.title }}</td>
+                <td>{{ registry.advisor }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('registry_show', { 'id': registry.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('registry_edit', { 'id': registry.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registry_new') }}">Create a new registry</a>
+        </li>
+    </ul>
+{% endblock %}

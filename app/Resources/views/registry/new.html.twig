@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{# this tag only applies to the forms defined in this template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="mt-5">Iberoamerican Congress on Geometry 2020</h2>
+        <h4 class="mt-4">Registry Form</h4>
+
+        {{ form_start(form) }}
+
+
+        <div class="row">
+            <div class="col-12 col-lg-8">
+
+                <div class="my-4">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Personal Information</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.name, 'Name') }}
+                                    {{ form_errors(form.name) }}
+                                    {{ form_widget(form.name) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.surname, 'Surname') }}
+                                    {{ form_errors(form.surname) }}
+                                    {{ form_widget(form.surname) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <div class="form-group">
+                                    {{ form_label(form.email, 'Email') }}
+                                    {{ form_errors(form.email) }}
+                                    {{ form_widget(form.email) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="form-group">
+                                    {{ form_label(form.citizenship, 'Citizenship') }}
+                                    {{ form_errors(form.citizenship) }}
+                                    {{ form_widget(form.citizenship) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <div class="form-group">
+                                    {{ form_label(form.telephone, 'Telephone') }}
+                                    {{ form_errors(form.telephone) }}
+                                    {{ form_widget(form.telephone) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="form-group">
+                                    {{ form_label(form.gender, 'Gender') }}
+                                    {{ form_errors(form.gender) }}
+                                    {{ form_widget(form.gender) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <strong>Academic Information</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.affiliation, 'Affiliation') }}
+                                    {{ form_errors(form.affiliation) }}
+                                    {{ form_widget(form.affiliation) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.interest, 'Field of Interest') }}
+                                    {{ form_errors(form.interest) }}
+                                    {{ form_widget(form.interest) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-4">
+                                <div class="form-group">
+                                    {{ form_label(form.title, 'Title') }}
+                                    {{ form_errors(form.title) }}
+                                    {{ form_widget(form.title) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <div class="form-group">
+                                    {{ form_label(form.advisor, 'Advisor') }}
+                                    {{ form_errors(form.advisor) }}
+                                    {{ form_widget(form.advisor, {'attr': {'disabled': 'disabled'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {{ form_widget(form) }}
+
+            <input type="submit" class="btn btn-info my-4" value="Submit" />
+
+            {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{#    <ul>#}
+{#        <li>#}
+{#            <a href="{{ path('registry_index') }}">Back to the list</a>#}
+{#        </li>#}
+{#    </ul>#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $('#appbundle_registry_title').on('change', function(){
+            if ($(this).val() == 'Student') {
+                $('#appbundle_registry_advisor').prop("disabled", false);
+                // $('#appbundle_registry_advisor').attr("disabled", "enabled");
+            }
+            else {
+                $('#appbundle_registry_advisor').prop("disabled", true);
+                // $('#appbundle_registry_advisor').attr("disabled", "disabled");
+            }
+        });
+    </script>
+{% endblock %}

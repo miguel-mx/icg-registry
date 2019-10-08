@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="my-5">Iberoamerican Congress on Geometry 2020</h2>
+        <h4 class="mb-4">Thank you for your registry</h4>
+
+        <div class="row mb-5">
+            <div class="col-12 col-lg-8">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ registry.name|title }} {{ registry.surname|title }}</li>
+                        <li class="list-group-item">{{ registry.email }}</li>
+                        <li class="list-group-item">{{ registry.telephone }}</li>
+                        <li class="list-group-item">{{ registry.citizenship }}</li>
+                        <li class="list-group-item">{{ registry.affiliation }}</li>
+                        <li class="list-group-item">{{ registry.interest }}</li>
+                        <li class="list-group-item">{{ registry.title }}</li>
+                        {%  if registry.advisor %}
+                            <li class="list-group-item">{{ registry.advisor }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="http://www.matmor.unam.mx/iberoamerican-congress-on-geometry-2020/" class="my-5"><span class="lead">Continue...</span></a>
+
+    </div>
+{#    <h1>Registry</h1>#}
+
+{#    <table>#}
+{#        <tbody>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <td>{{ registry.id }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Name</th>#}
+{#                <td>{{ registry.name }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Surname</th>#}
+{#                <td>{{ registry.surname }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Email</th>#}
+{#                <td>{{ registry.email }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Citizenship</th>#}
+{#                <td>{{ registry.citizenship }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Gender</th>#}
+{#                <td>{{ registry.gender }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Affiliation</th>#}
+{#                <td>{{ registry.affiliation }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Telephone</th>#}
+{#                <td>{{ registry.telephone }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Interest</th>#}
+{#                <td>{{ registry.interest }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Title</th>#}
+{#                <td>{{ registry.title }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Advisor</th>#}
+{#                <td>{{ registry.advisor }}</td>#}
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+
+{#    <ul>#}
+{#        <li>#}
+{#            <a href="{{ path('registry_index') }}">Back to the list</a>#}
+{#        </li>#}
+{#        <li>#}
+{#            <a href="{{ path('registry_edit', { 'id': registry.id }) }}">Edit</a>#}
+{#        </li>#}
+{#        <li>#}
+{#            {{ form_start(delete_form) }}#}
+{#                <input type="submit" value="Delete">#}
+{#            {{ form_end(delete_form) }}#}
+{#        </li>#}
+{#    </ul>#}
+{% endblock %}
