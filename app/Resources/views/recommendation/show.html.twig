@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+ <div class="container">
+        <h2 class="mt-5">VIII Iberoamerican Congress on Geometry 2020</h2>
+        <h4 class="my-4">Recommendation for {{ registry.name }} {{ registry.surname }}</h4>
+
+        <div class="row my-5">
+            <div class="col-8">
+                <p>{{registry.recommendation.letter }}</p>
+            </div>
+        </div>
+ </div>
+
+{#    <h1>Recommendation</h1>#}
+
+{#    <table>#}
+{#        <tbody>#}
+{#            <tr>#}
+
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Letter</th>#}
+{#                <td>{{ registry.recomendation.letter }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Created</th>#}
+{#                <td>{% if registry.recomendation.created %}{{ registry.recomendation.created|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+
+{% endblock %}

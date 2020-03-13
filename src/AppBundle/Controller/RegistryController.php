@@ -75,6 +75,24 @@ class RegistryController extends Controller
 
             $mailer->send($message);
 
+            If($registry->getAdvisorEmail()) {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Iberoamerican Congress on Geometry 2020 - Recomendation ')
+                    ->setFrom('icg@matmor.unam.mx')
+                    ->setTo($registry->getAdvisorEmail())
+                    ->setBcc(array('miguel@matmor.unam.mx'))
+                    ->setBody(
+                        $this->renderView(
+                            'recommendation/email.txt.twig',
+                            ['registry' => $registry]
+                        ),
+                        'text/plain'
+
+                    );
+
+                $mailer->send($message);
+            }
+
             return $this->redirectToRoute('registry_confirmation', array('id' => $registry->getId()));
         }
 
@@ -112,6 +130,7 @@ class RegistryController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Displays a form to edit an existing registry entity.

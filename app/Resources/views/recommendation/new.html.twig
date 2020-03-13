@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{# this tag only applies to the forms defined in this template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+     <div class="container">
+        <h2 class="mt-5">VIII Iberoamerican Congress on Geometry 2020</h2>
+        <h4 class="my-4">Recommendation Form</h4>
+
+         <div class="row">
+             <div class="col-8">
+                 <p>
+                     Professor {{ registry.advisor }}, {{ registry.name|title }} {{ registry.surname|title }} suggested you as
+                     a reference regarding his attendance to the <strong>VIII Iberoamerican Congress on Geometry</strong>.
+                     We kindly ask you to write a short recommendation letter:
+                 </p>
+             </div>
+         </div>
+
+         {{ form_start(form) }}
+         <div class="row mt-4">
+             <div class="col-8 col-lg-8">
+                 <div class="form-group">
+                     {{ form_errors(form.letter) }}
+                     {{ form_widget(form.letter, {'attr': {'rows': '12'}}) }}
+                 </div>
+             </div>
+         </div>
+
+         {{ form_widget(form) }}
+         <input type="submit" class="btn btn-info my-4" value="Submit" />
+        {{ form_end(form) }}
+     </div>
+
+
+
+{#    {{ form_start(form) }}#}
+{#        {{ form_widget(form) }}#}
+{#        <input type="submit" value="Create" />#}
+{#    {{ form_end(form) }}#}
+
+
+{% endblock %}

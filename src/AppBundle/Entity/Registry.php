@@ -87,7 +87,7 @@ class Registry
     /**
      * @var string
      *
-     * @ORM\Column(name="interest", type="string", length=255)
+     * @ORM\Column(name="interest", type="string", length=255, nullable=true)
      */
     private $interest;
 
@@ -104,6 +104,37 @@ class Registry
      * @ORM\Column(name="advisor", type="string", length=255, nullable=true)
      */
     private $advisor;
+
+   /**
+     * @var string
+     *
+     * @ORM\Column(name="advisorEmail", type="string", length=255, nullable=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
+     */
+    private $advisorEmail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="speaker", type="string", length=4, nullable=true)
+     */
+    private $speaker;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="other", type="text", nullable=true)
+     */
+    private $other;
+
+    /**
+     * One registro One Recommendation
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Recommendation", mappedBy="registro")
+     */
+    private $recommendation;
 
     /**
      * @Gedmo\Slug(fields={"name", "surname"})
@@ -359,6 +390,94 @@ class Registry
     public function getAdvisor()
     {
         return $this->advisor;
+    }
+
+    /**
+     * Set advisorEmail
+     *
+     * @param string $advisorEmail
+     *
+     * @return Registry
+     */
+    public function setAdvisorEmail($advisorEmail)
+    {
+        $this->advisorEmail = $advisorEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get advisorEmail
+     *
+     * @return string
+     */
+    public function getAdvisorEmail()
+    {
+        return $this->advisorEmail;
+    }
+
+   /**
+     * Set speaker
+     *
+     * @param string $speaker
+     *
+     * @return Registry
+     */
+    public function setSpeaker($speaker)
+    {
+        $this->speaker = $speaker;
+
+        return $this;
+    }
+
+    /**
+     * Get speaker
+     *
+     * @return string
+     */
+    public function getSpeaker()
+    {
+        return $this->speaker;
+    }
+
+   /**
+     * Set other
+     *
+     * @param string $other
+     *
+     * @return Registry
+     */
+    public function setOther($other)
+    {
+        $this->other = $other;
+
+        return $this;
+    }
+
+   /**
+     * @return mixed
+     */
+    public function getRecommendation()
+    {
+        return $this->recommendation;
+    }
+
+    /**
+     * @param mixed $recommendation
+     */
+    public function setRecommendation($recommendation)
+    {
+        $this->recommendation = $recommendation;
+    }
+
+    /**
+     * Get other
+     *
+     * @return string
+     */
+    public function getOther()
+    {
+        return $this->other;
     }
 
     public function setSlug($slug)
